@@ -1,15 +1,20 @@
 spring:
+  application:
+    name: gateway
   cloud:
     consul:
-      enabled: false
+      host: 192.168.99.100
+      port: 8500
       discovery:
-        enabled: false
-      config:
-        enabled: false
-
+#        ip-address: 192.168.43.216
+        preferIpAddress: true
+        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 security:
   basic:
     enabled: true
 
 server:
-    port: 8080
+  port: 8080
+endpoints:
+  health:
+    sensitive: false
