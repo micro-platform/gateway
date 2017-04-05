@@ -11,6 +11,5 @@ security:
   basic:
     enabled: true
 
-local:
-  server:
+server:
     port: 8080
