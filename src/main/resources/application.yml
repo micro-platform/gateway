@@ -6,3 +6,7 @@ spring:
         enabled: false
       config:
         enabled: false
+
+security:
+  basic:
+    enabled: true
