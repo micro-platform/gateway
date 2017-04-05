@@ -15,7 +15,7 @@ import java.net.URL;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class GatewayApplicationTests {
 	@LocalServerPort
 	private int port;
@@ -27,12 +27,12 @@ public class GatewayApplicationTests {
 
 	@Before
 	public void setup() throws MalformedURLException {
-        this.base = new URL("http://localhost:" + port + "/");
+        this.base = new URL("http://localhost:" + port + "/test/");
 	}
 
 	@Test
 	public void testBaseRoute() {
-        ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+        ResponseEntity<String> response = template.withBasicAuth("admin1", "admin1").getForEntity(base.toString(), String.class);
 
         assertEquals(response.getBody(), "Test qui marche");
 	}

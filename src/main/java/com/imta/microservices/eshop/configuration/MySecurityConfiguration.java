@@ -9,7 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * Created by Steeve Sinigaglia on 05/04/2017.
+ * Configuration for spring security
+ *
+ * @author Steeve Sinigaglia
  */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
