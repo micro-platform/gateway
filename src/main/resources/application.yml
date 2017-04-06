@@ -1,30 +1,21 @@
-spring:
-  application:
-    name: gateway
-  cloud:
-    config:
-      enabled: false
-    consul:
-      host: localhost
-      port: 8500
-      discovery:
-#        ip-address: 192.168.43.216
-        preferIpAddress: true
-        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-        healthCheckPath: /health
-        healthCheckInterval: 15s
-
-security:
-  basic:
-    enabled: true
-
-server:
-  port: 8080
-
-endpoints:
-  health:
-    sensitive: false
-
-management:
-  security:
-    enabled: false
+#spring:
+#  application:
+#    name: gateway
+#  cloud:
+#    config:
+#      enabled: false
+#
+#security:
+#  basic:
+#    enabled: true
+#
+#server:
+#  port: 8080
+#
+#endpoints:
+#  health:
+#    sensitive: false
+#
+#management:
+#  security:
+#    enabled: false
