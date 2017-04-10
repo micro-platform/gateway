@@ -1,21 +1,22 @@
 spring:
- cloud:
-   config:
-     enabled: false
-   consul:
-     host: localhost
-     port: 8500
-     enabled: true
-
-     discovery:
-#        ip-address: 192.168.43.216
-       preferIpAddress: true
-       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-       healthCheckPath: /health
-       healthCheckInterval: 15s
-     config:
-       enabled: true
-       fail-fast: false
-       format: yaml
-       prefix: config
-       defaultContext: gateway
+  application:
+    name: gateway
+  cloud:
+    config:
+      enabled: false
+    consul:
+      host: localhost
+      port: 8500
+      enabled: true
+      discovery:
+        preferIpAddress: true
+        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+        healthCheckPath: /health
+        healthCheckInterval: 15s
+      config:
+        enabled: true
+        format: yaml
+        fail-fast: false
+        prefix: config
+        defaultContext: gateway
+        data-key: data
