@@ -1,4 +1,4 @@
-FROM ewolff/docker-java
+FROM java:8-jdk
 
 ARG version
 
