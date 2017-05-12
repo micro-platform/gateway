@@ -10,7 +10,7 @@ spring:
       enabled: true
       discovery:
         preferIpAddress: true
-        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+        instanceId: ${spring.application.name}
         healthCheckPath: /health
         healthCheckInterval: 15s
       config:
@@ -20,6 +20,8 @@ spring:
         prefix: config
         defaultContext: gateway
         data-key: data
+zuul:
+  sensitiveHeaders:
 
 ---
 spring:
