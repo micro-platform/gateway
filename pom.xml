@@ -5,7 +5,7 @@
 
 	<groupId>com.imta.microservices.eshop</groupId>
 	<artifactId>gateway</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<packaging>jar</packaging>
 
 	<name>gateway</name>
@@ -27,15 +27,15 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cloud-connectors</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-hystrix</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -45,17 +45,31 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-security</artifactId>
 		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.cloud</groupId>-->
-			<!--<artifactId>spring-cloud-starter-consul-config</artifactId>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.cloud</groupId>-->
-			<!--<artifactId>spring-cloud-starter-consul-discovery</artifactId>-->
-		<!--</dependency>-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+			<artifactId>spring-cloud-starter-consul-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-server</artifactId>
+		</dependency>
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-starter-stream-rabbit</artifactId>-->
+		<!--</dependency>-->
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zuul</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -82,6 +96,25 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2-beta-5</version>
+				<configuration>
+					<descriptors>
+						<descriptor>${pom.basedir}/assembly-zip.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- append to the packaging phase. -->
+						<goals>
+							<goal>single</goal> <!-- goals == mojos -->
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
